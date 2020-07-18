@@ -1,0 +1,1 @@
+Rscript featureCounts.R /home/lanzhzh/workitem/GC_RNAseq/smallRNA/shell/../results/5_final_counts/final_counts.txt normalized_counts.txt normalized_counts_significant.txt results_gene_annotated.txt results_gene_annotated_significant.txt
