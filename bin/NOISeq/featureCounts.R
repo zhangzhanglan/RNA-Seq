@@ -27,11 +27,11 @@ mfactors <- matrix(metadata$sampleid, nrow = 2, ncol = 1, byrow = TRUE, dimnames
 mfactors
 mydata <- readData(data=countdata, factors=mfactors)
 getNOIseqRes <- noiseq(mydata, k = 0.1, norm = "uqua", replicates = "no", factor="sample", pnr = 0.2, nss = 10)
-write.table(getNOIseqRes@results[[1]], file="afterNoiseq.txt", sep="\t", row.names=T, col.names=T, quote=F)
-mynoiseq.deg = degenes(getNOIseqRes, q = 0.9, M = NULL)
-mynoiseq.deg1 = degenes(getNOIseqRes, q = 0.9, M = "up")
-mynoiseq.deg2 = degenes(getNOIseqRes, q = 0.9, M = "down")
+write.table(getNOIseqRes@results[[1]], file=paste(args[6], "afterNoiseq.txt", sep="_"), sep="\t", row.names=T, col.names=T, quote=F)
+mynoiseq.deg = degenes(getNOIseqRes, q = 0.8, M = NULL)	# recommad 0.9
+mynoiseq.deg1 = degenes(getNOIseqRes, q = 0.8, M = "up")
+mynoiseq.deg2 = degenes(getNOIseqRes, q = 0.8, M = "down")
 mynoiseq.deg
-write.table(mynoiseq.deg, file="afterNoiseq_sig.txt", sep="\t", row.names=T, col.names=T, quote=F)
+write.table(mynoiseq.deg, file=paste(args[6], "afterNoiseq_sig.txt", sep="_"), sep="\t", row.names=T, col.names=T, quote=F)
 DE.plot(getNOIseqRes, q = 0.9, graphic = "expr", log.scale = TRUE)
 DE.plot(getNOIseqRes, q = 0.8, graphic = "MD")
